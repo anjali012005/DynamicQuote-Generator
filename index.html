@@ -35,11 +35,11 @@
         getquote(api);
 
         function tweet() {
-            window.open("https://twitter.com/intent/tweet?text" 
-            + quote.innerHTML,
-            + "---- by " + author.innerHTML,
-            "Tweet window", "width=600", "height=300" );
+            const tweetText = `"${quote.innerHTML}" ---- by ${author.innerHTML}`;
+            const tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
+            window.open(tweetUrl, "TweetWindow", "width=600,height=300");
         }
+
     </script>
 </body>
 </html>

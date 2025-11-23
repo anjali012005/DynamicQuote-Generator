@@ -1,62 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quote of the Day</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quote of the Day</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,700;1,600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="quote-box">
-        <h2>Quote of the Day</h2>
-        <blockquote id="quote">Loading...</blockquote>
-        <span id="author">Loading...</span>
-        <div>
-            <button id="newQuote">New Quote</button>
-            <button id="tweetQuote">Tweet</button>
-        </div>
+  <div class="quote-box">
+    <h2>Quote of the Day</h2>
+    <blockquote id="quote">Loading...</blockquote>
+    <span id="author">Loading...</span>
+    <div>
+      <button id="newQuote">New Quote</button>
+      <button id="tweetQuote">Tweet</button>
     </div>
+  </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const quote = document.getElementById("quote");
-            const author = document.getElementById("author");
-            const newQuoteBtn = document.getElementById("newQuote");
-            const tweetBtn = document.getElementById("tweetQuote");
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const quote = document.getElementById("quote");
+      const author = document.getElementById("author");
+      const newQuoteBtn = document.getElementById("newQuote");
+      const tweetBtn = document.getElementById("tweetQuote");
 
-            // Local array of quotes
-            const quotes = [
-                { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
-                { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
-                { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
-                { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-                { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" }
-            ];
+      // Local array of quotes
+      const quotes = [
+        { text: "Be yourself; everyone else is already taken.", author: "Oscar Wilde" },
+        { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+        { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+        { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+        { text: "In the middle of every difficulty lies opportunity.", author: "Albert Einstein" },
+        { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" }
+      ];
 
-            // Function to display a random quote
-            function displayRandomQuote() {
-                const random = quotes[Math.floor(Math.random() * quotes.length)];
-                quote.textContent = random.text;
-                author.textContent = random.author || "Unknown";
-            }
+      // Display a random quote
+      function displayRandomQuote() {
+        const random = quotes[Math.floor(Math.random() * quotes.length)];
+        quote.textContent = random.text;
+        author.textContent = random.author || "Unknown";
+      }
 
-            // Function to tweet the current quote
-            function tweetQuote() {
-                const tweetText = `"${quote.textContent}" ---- by ${author.textContent}`;
-                const tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
-                window.open(tweetUrl, "TweetWindow", "width=600,height=300");
-            }
+      // Tweet the current quote
+      function tweetQuoteFunc() {
+        const tweetText = `"${quote.textContent}" ---- by ${author.textContent}`;
+        const tweetUrl = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(tweetText);
+        window.open(tweetUrl, "TweetWindow", "width=600,height=300");
+      }
 
-            // Event listeners
-            newQuoteBtn.addEventListener("click", displayRandomQuote);
-            tweetBtn.addEventListener("click", tweetQuote);
+      // Event listeners
+      newQuoteBtn.addEventListener("click", displayRandomQuote);
+      tweetBtn.addEventListener("click", tweetQuoteFunc);
 
-            // Display initial quote
-            displayRandomQuote();
-        });
-    </script>
+      // Initial quote
+      displayRandomQuote();
+    });
+  </script>
 </body>
 </html>
